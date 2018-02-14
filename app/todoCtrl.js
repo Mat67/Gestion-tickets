@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app').controller('todoCtrl', function ($scope, todoStorage) {
-
+    console.log('test');
     $scope.todoStorage = todoStorage;
 
     $scope.$watch('todoStorage.data', function() {
