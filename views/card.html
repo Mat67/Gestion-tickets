@@ -7,18 +7,25 @@
             {{$ctrl.carte.name}}
     </span>
     <div class="badges">
-        <!-- <span class="badges">
-            <div class="badge" title="Éléments de checklist">
-                <span class="badge-icon icon-sm icon-checklist"></span>
-                <span class="badge-text">8/24</span>
+        <span class="badges">
+            <div ng-if="$ctrl.carte.badges.checkItems > 0" class="badge" title="Éléments de checklist">
+                <img class="badge-icon"  src="images/checklist@2x.png" />
+                <span class="badge-text">{{ $ctrl.carte.badges.checkItemsChecked }}/{{ $ctrl.carte.badges.checkItems }}</span>
             </div>
+
+            <div ng-if="$ctrl.carte.badges.description" class="badge is-icon-only" title="Cette carte comporte une description.">
+                <img class="badge-icon"  src="images/description@2x.png" />
+            </div>
+
+            <div ng-if="$ctrl.carte.badges.comments > 0" class="badge" title="Commentaires">
+                <img class="badge-icon"  src="images/comments@2x.png" />
+                <span class="badge-text">{{ $ctrl.carte.badges.comments }}</span>
+            </div>
+
+            <div ng-if="$ctrl.carte.badges.attachments > 0" class="badge" title="Commentaires">
+                    <img class="badge-icon"  src="images/attachments@2x.png" title="{{ $ctrl.carte.badges.attachments }} pièces jointes"/>
+                </div>
         </span>
-        <span class="js-custom-field-badges">
-            <span></span>
-        </span>
-        <span class="js-plugin-badges">
-            <span></span>
-        </span> -->
     </div>
     <div class="list-card-members">
         <div class="member" ng-repeat="member in $ctrl.carte.members" >

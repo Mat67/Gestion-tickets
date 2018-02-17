@@ -124,14 +124,20 @@ body {
     text-overflow: ellipsis
 }
 
-.badge, .badge-icon, .badge-text {
-    vertical-align: top
+.badge, .badge-text {
+    vertical-align: right
+}
+
+.badge-icon {
+    height: 18px;
+    width: 18px;
+    vertical-align: right
 }
 
 .badge-text {
     font-size: 12px;
     padding: 0 2px;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .badge.is-complete {
