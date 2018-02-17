@@ -1,8 +1,9 @@
 'use strict'
 
-angular.module('app').service('trelloService', function ($http) {
+angular.module('app').service('trelloService', function ($http, $q) {
     var service = {
-        rechercheCartes: rechercheCartesImpl
+        rechercheCartes: rechercheCartesImpl,
+        getMember: getMemberImpl
     }
     var token = '87bb626434f4542e68649ac0492c53cd452f2c14e98601bdb352d16d2866aae3'
     var key = 'f591bda7cc554fec77c38cc22923b547'
@@ -15,9 +16,36 @@ angular.module('app').service('trelloService', function ($http) {
             cartes = _.filter(cartes, function (f) {
                 return f.name.indexOf('GLPI_' + idTicket) !== -1
             })
-            
+
+            _.forEach(cartes, function (c) {
+                c.members = []
+                _.forEach(c.idMembers, function (m) {
+                    service.getMember(m).then(function (result) {
+                        c.members.push(result)
+                    })
+                })
+            })
             return cartes
         })
+    }
+
+    function getMemberImpl(idMember) {
+        var requete = buildRequete('members/' + idMember + '?fields=all')
+        var defered = $q.defer()
+        var promise = defered.promise
+        promise = promise.then(function (id) {
+            var result =  _.memoize(function(id) {
+                return $http.get(requete).then(function (result) {
+                    return result.data
+                })
+              })
+
+            return result(id)
+        })
+
+        defered.resolve(idMember)
+
+        return promise
     }
 
     function buildRequete(requete) {
