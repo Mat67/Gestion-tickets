@@ -20,7 +20,7 @@
         </span>
     </div>
     <div class="list-card-members">
-        <div class="member member-initials" ng-repeat="member in $ctrl.carte.members">
+        <div class="member member-initials" ng-repeat="member in $ctrl.carte.members" title="{{ member.fullName }} ({{ member.username }})">
             {{member.initials}}
         </div>
     </div>
