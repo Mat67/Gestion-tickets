@@ -2,6 +2,24 @@ body {
     width: 320px;
 }
 
+.list {
+    background: #e2e4e6;
+    border-radius: 3px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    max-height: 100%;
+    position: relative;
+    white-space: normal;
+    padding: 5px
+}
+
 .list-card {
     background-color: #fff;
     border-bottom: 1px solid #ccc;
@@ -9,7 +27,7 @@ body {
     cursor: pointer;
     display: block;
     margin-bottom: 6px;
-    max-width: 300px;
+    max-width: 310px;
     min-height: 20px;
     position: relative;
     text-decoration: none;

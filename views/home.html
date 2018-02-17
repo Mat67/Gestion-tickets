@@ -1,7 +1,6 @@
-<div class='container' ng-controller="trelloController">
-    <div class='row' ng-if="cartes.length > 0">
-        <card carte='carte' ng-repeat='carte in cartes'/>
-    </div>
+<div class='list' ng-controller="trelloController">
+    
+    <card carte='carte' ng-repeat='carte in cartes'/>
     <div class='row' ng-if="cartes.length === 0">
         <span>Aucune carte trouvée pour le tiket N° {{ ticketId }}</span>
         <button>Créer une carte</button>
