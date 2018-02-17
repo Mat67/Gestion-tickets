@@ -2,27 +2,162 @@ body {
     width: 320px;
 }
 
-.todo-item .btn-remove-todo {
-    display:none;
+.list-card-details {
+    overflow: hidden;
+    padding: 6px 6px 2px 8px;
+    position: relative;
+    z-index: 10
 }
 
-.todo-item:hover .btn-remove-todo {
+.list-card-labels {
+    margin: 2px 0;
+    overflow: auto;
+    position: relative
+}
+
+.list-card-labels:empty {
+    display: none;
+    margin: 0
+}
+
+.card-label {
+    background-color: #b6bbbf;
+    border-radius: 3px;
+    color: #fff;
     display: block;
+    margin-right: 3px;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 3px 6px;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
 }
 
-.todo-item .todo-content {
-    font-weight: bold;
-}
-.todo-item.completed .todo-content {
-    color:darkgray;
-    font-weight: normal;
-    text-decoration: line-through;
+.card-label-green {
+    background-color: #61bd4f
 }
 
-#todo-list {
-    margin-bottom: 10px;
+.card-label-yellow {
+    background-color: #f2d600
 }
 
-#btn-remove-all {
-    margin-bottom: 10px;
+
+.card-label-red {
+    background-color: #eb5a46
+}
+
+.card-label-orange {
+    background-color: #ffab4a
+}
+
+.card-label-purple {
+    background-color: #c377e0
+}
+
+.card-label-blue {
+    background-color: #0079bf
+}
+
+.list-card-title {
+    clear: both;
+    display: block;
+    margin: 0 0 4px;
+    overflow: hidden;
+    text-decoration: none;
+    word-wrap: break-word;
+    color: #4d4d4d
+}
+
+
+
+.badge.is-complete .badge-icon {
+    color: #fff
+}
+
+.badge.is-unread-notification {
+    background-color: #eb5a46;
+    border-radius: 3px;
+    color: #fff
+}
+
+.badge.is-unread-notification .badge-icon {
+    color: #fff
+}
+
+.badge.is-due-complete {
+    background-color: #61bd4f;
+    border-radius: 3px;
+    color: #fff
+}
+
+.badge.is-due-complete .badge-icon {
+    color: #fff
+}
+
+.badge.is-due-soon {
+    background-color: #f2d600;
+    border-radius: 3px;
+    color: #fff
+}
+
+.badge.is-due-soon .badge-icon {
+    color: #fff
+}
+
+.badge.is-due-now {
+    background-color: #eb5a46;
+    border-radius: 3px;
+    color: #fff
+}
+
+.badge.is-due-past {
+    background-color: #ec9488;
+    border-radius: 3px;
+    color: #fff
+}
+
+.list-card-members {
+    float: right
+}
+
+.list-card-members .member {
+    float: right;
+    margin: 2px 0 4px 4px
+}
+
+.member {
+    background-color: #d6dadc;
+    border-radius: 25em;
+    color: #4d4d4d;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 30px;
+    margin: 0 4px 4px 0;
+    overflow: visible;
+    position: relative;
+    width: 30px;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index: 0
+}
+
+.member-initials {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    height: 30px;
+    left: 0;
+    line-height: 30px;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%
 }
