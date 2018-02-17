@@ -4,9 +4,10 @@
     </div>
     
     <span class="list-card-title" dir="auto">
-        <span>{{$ctrl.carte.name}}</span>
+            {{$ctrl.carte.name}}
+    </span>
     <div class="badges">
-        <span class="js-badges">
+        <!-- <span class="badges">
             <div class="badge" title="Éléments de checklist">
                 <span class="badge-icon icon-sm icon-checklist"></span>
                 <span class="badge-text">8/24</span>
@@ -17,11 +18,13 @@
         </span>
         <span class="js-plugin-badges">
             <span></span>
-        </span>
+        </span> -->
     </div>
     <div class="list-card-members">
-        <div class="member member-initials" ng-repeat="member in $ctrl.carte.members" title="{{ member.fullName }} ({{ member.username }})">
-            {{member.initials}}
+        <div class="member" ng-repeat="member in $ctrl.carte.members" >
+            <span class="member-initials" title="{{ member.fullName }} ({{ member.username }})">
+                    {{member.initials}}
+                </span>
         </div>
     </div>
 </div>

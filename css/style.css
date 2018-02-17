@@ -2,11 +2,25 @@ body {
     width: 320px;
 }
 
+.list-card {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 6px;
+    max-width: 300px;
+    min-height: 20px;
+    position: relative;
+    text-decoration: none;
+    z-index: 0;
+}
+
 .list-card-details {
     overflow: hidden;
     padding: 6px 6px 2px 8px;
     position: relative;
-    z-index: 10
+    z-index: 10;
 }
 
 .list-card-labels {
@@ -80,12 +94,51 @@ body {
     display: block;
     margin: 0 0 4px;
     overflow: hidden;
+    position: relative;
     text-decoration: none;
     word-wrap: break-word;
     color: #4d4d4d
 }
 
+.badges {
+    float: left;
+    max-width: 100%;
+    padding-bottom: 2px;
+    position: relative;
+}
 
+.badges:empty {
+    display: none
+}
+
+.badge {
+    color: #838c91;
+    display: inline-block;
+    margin: 0 4px 4px 0;
+    max-width: 100%;
+    min-height: 18px;
+    overflow: hidden;
+    position: relative;
+    padding: 1px 2px;
+    text-decoration: none;
+    text-overflow: ellipsis
+}
+
+.badge, .badge-icon, .badge-text {
+    vertical-align: top
+}
+
+.badge-text {
+    font-size: 12px;
+    padding: 0 2px;
+    white-space: nowrap
+}
+
+.badge.is-complete {
+    background-color: #61bd4f;
+    border-radius: 3px;
+    color: #fff
+}
 
 .badge.is-complete .badge-icon {
     color: #fff
@@ -127,19 +180,38 @@ body {
     color: #fff
 }
 
+.badge.is-due-now .badge-icon {
+    color: #fff
+}
+
 .badge.is-due-past {
     background-color: #ec9488;
     border-radius: 3px;
     color: #fff
 }
 
+.badge.is-due-past .badge-icon {
+    color: #fff
+}
+
+.badge.is-voted {
+    background-color: #e2e4e6;
+    border-radius: 3px
+}
+
+
 .list-card-members {
-    float: right
+    float: right;
 }
 
 .list-card-members .member {
     float: right;
-    margin: 2px 0 4px 4px
+    margin: 2px 0 4px 4px;
+    display: block;
+}
+
+div {
+    display: block;
 }
 
 .member {
@@ -159,7 +231,18 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    z-index: 0
+    z-index: 0;
+}
+
+.list-wrapper {
+    width: 270px;
+    margin: 0 5px;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
 }
 
 .member-initials {
@@ -173,5 +256,5 @@ body {
     position: absolute;
     text-align: center;
     top: 0;
-    width: 100%
+    width: 100%;
 }
