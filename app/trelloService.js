@@ -31,6 +31,14 @@ angular.module('app').service('trelloService', function ($http, $q) {
 
     function getMemberImpl(idMember) {
         var requete = buildRequete('members/' + idMember + '?fields=all')
+        
+        return $http.get(requete).then(function (result) {
+            return result.data
+        })
+    }
+
+    function getMemberMemoizeImpl(idMember) {
+        var requete = buildRequete('members/' + idMember + '?fields=all')
         var defered = $q.defer()
         var promise = defered.promise
         promise = promise.then(function (id) {

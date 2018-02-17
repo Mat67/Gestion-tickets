@@ -5,7 +5,7 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
 
     var tablink
     var url = window.location.toString()
-    chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+    chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
         var activeTab = tabs[0]
 
         var idTicket = getTicketId(activeTab)
@@ -29,7 +29,7 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
                 return resultat[1]
             }
         }
-        
+            
         return undefined
     }
 })
