@@ -1,7 +1,9 @@
 <div class="list-card-details">
-    <!-- <div class="list-card-labels">
-        <span class="card-label card-label-green mod-card-front" title="Developpements">Developpements</span>
-    </div> -->
+    <div class="list-card-labels">
+        <!-- <span class="card-label card-label-green mod-card-front" title="Developpements">Developpements</span> -->
+        <div class="card-label  mod-card-front" ng-class="$ctrl.labelColor(label)" ng-repeat="label in $ctrl.carte.labels" title="{{ label.name }}"></div>
+    </div>
+    
     <span class="list-card-title" dir="auto">
         <span>{{$ctrl.carte.name}}</span>
     <div class="badges">
@@ -18,9 +20,9 @@
             <span></span>
         </span>
     </div>
-    <!-- <div class="list-card-members">
-        <div class="member member-initials">
-            MH
+    <div class="list-card-members">
+        <div class="member member-initials" ng-repeat="member in $ctrl.carte.members">
+            {{member}}
         </div>
-    </div> -->
+    </div>
 </div>

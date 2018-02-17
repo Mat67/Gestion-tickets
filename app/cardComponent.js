@@ -5,7 +5,16 @@ angular.module('app').component('card', {
       carte: '='
     },
     controller: function cardComponent() {
-        console.log(this.carte)
+        this.labelColor = function (label) {
+            switch (label.color) {
+                case 'orange':
+                    return 'card-label-orange'
+                    break;
+            
+                default:
+                    break;
+            }
+        }
     },
     templateUrl: function() {
         return 'views/card.html'

@@ -9,7 +9,7 @@ angular.module('app').service('trelloService', function ($http) {
     var apiTrello = 'https://api.trello.com/1/'
 
     function rechercheCartesImpl(idTicket) {
-        var requete = buildRequete('boards/7iR1688Y/cards?fields=name,url')
+        var requete = buildRequete('boards/7iR1688Y/cards?fields=name,url,idMembers,labels')
         return $http.get(requete).then(function (result) {
             var cartes = result.data
             cartes = _.filter(cartes, function (f) {

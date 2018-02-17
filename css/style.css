@@ -20,6 +20,20 @@ body {
     margin: 0
 }
 
+.card-label.mod-card-front {
+    float: left;
+    font-size: 12px;
+    font-weight: 600;
+    height: 8px;
+    line-height: 100px;
+    margin: 0 3px 3px 0;
+    max-width: 42px;
+    min-width: 42px;
+    padding: 0;
+    text-shadow: none;
+    width: auto
+}
+
 .card-label {
     background-color: #b6bbbf;
     border-radius: 3px;
