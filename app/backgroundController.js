@@ -5,9 +5,6 @@ angular.module('app').controller('backgroundController', function ($scope, trell
         if (changeInfo.status === 'loading')
         
         chrome.tabs.getSelected(null, function(tab) {
-            // if (tab.url.indexOf('google') !== -1)
-            //     tab.url = 'http://helpdesk-groupe-burrus/front/ticket.form.php?id=54556'
-
             if (!glpiService.isGlpiPage(tab.url)) {
                 browserService.disable(tabId)
             }
