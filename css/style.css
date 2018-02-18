@@ -309,6 +309,7 @@ div {
     background-color: #e2e4e6;
     z-index: 10;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .card-composer {
@@ -392,6 +393,7 @@ button, html input[type=button], input[type=reset], input[type=submit] {
 }
 
 .icon-lg {
+    cursor: pointer;
     height: 32px;
     font-size: 20px;
     line-height: 30px;

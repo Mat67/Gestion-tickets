@@ -4,7 +4,7 @@
     </div>
 
 
-    <div class="card-composer">
+    <div class="card-composer" ng-show="saisieVisible()">
         <div class="list-card">
             <div class="list-card-details ">
                 <div class="list-card-labels"></div>
@@ -16,15 +16,16 @@
         <div class="cc-controls u-clearfix">
             <div class="cc-controls-section">
                 <input class="primary confirm mod-compact js-add-card" type="submit" value="Ajouter">
-                <i class="material-icons icon-lg">clear</i>
+                <i class="material-icons icon-lg" ng-click="annulerSaisie()">clear</i>
             </div>
             <div class="cc-controls-section mod-right">
                 <i class="material-icons icon-lg">menu</i>
             </div>
         </div>
     </div>
+
+    <a class="open-card-composer" ng-show="ajoutCarteVisible()" ng-click="demarrerSaisie()">Ajouter une carte…</a>
 </div>
 
 
 
-<a class="open-card-composer hide" href="#">Ajouter une carte…</a>
