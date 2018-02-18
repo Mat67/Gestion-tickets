@@ -4,6 +4,7 @@
 "manifest_version": 2,
 "description" :"",
 "permissions": [
+    "tabs",
     "activeTab",
     "debugger",
     "storage",
@@ -17,7 +18,8 @@
   },
   
   "background": {
-    "scripts": ["scripts/background.js"]
+    //"scripts": ["scripts/background.js"],
+    "page": "backgroundIndex.html"
   },
   "content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'"
 }

@@ -5,6 +5,8 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
 
     var tablink
     var url = window.location.toString()
+    console.log(localStorage.getItem("welcome-message")) 
+
     chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
         var activeTab = tabs[0]
 
@@ -18,11 +20,11 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
 
                 if (result.length === 0)
                 {
-                    chrome.browserAction.setBadgeBackgroundColor({ color: [238, 170, 86, 1] })
-                    chrome.browserAction.setBadgeText({ text: '*' })
+                    // chrome.browserAction.setBadgeBackgroundColor({ color: [238, 170, 86, 1] })
+                    // chrome.browserAction.setBadgeText({ text: '*' })
                 }   
                 else {
-                    chrome.browserAction.setBadgeText({text: result.length.toString()})
+                    // chrome.browserAction.setBadgeText({text: result.length.toString()})
                 }
                  
             })
