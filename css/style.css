@@ -2,6 +2,10 @@ body {
     width: 320px;
 }
 
+div {
+    display: block;
+}
+
 .list {
     background: #e2e4e6;
     border-radius: 3px;
@@ -281,4 +285,153 @@ div {
     text-align: center;
     top: 0;
     width: 100%;
+}
+
+.card-composer {
+    padding-bottom: 8px;
+}
+
+.open-card-composer {
+    border-radius: 0 0 3px 3px;
+    border-style: none;
+    color: #838c91;
+    display: block;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding: 8px 10px;
+    position: relative;
+    text-decoration: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #e2e4e6;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.card-composer {
+    padding-bottom: 8px;
+}
+
+.cc-controls-section {
+    float: left;
+}
+
+.cc-controls-section.mod-right {
+    float: right;
+}
+
+input.mod-compact, input.mod-no-top-bottom-margin {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+input.mod-compact {
+    min-height: 32px;
+    padding: 4px 16px;
+    vertical-align: top
+}
+
+.button-link.primary {
+    background: #61bd4f;
+    border-color: #61bd4f;
+    border-bottom-color: #519839;
+    color: #fff
+}
+
+.hide {
+    display: none
+}
+
+.button.primary, button.primary, input[type=button].primary, input[type=submit].primary {
+    background: #5aac44;
+    -webkit-box-shadow: 0 1px 0 #519839;
+    box-shadow: 0 1px 0 #519839;
+    color: #fff;
+    -webkit-transition: backgroun .3s ease;
+    -webkit-transition: background .3s ease;
+    transition: background .3s ease;
+}
+
+.button, button, input[type=button], input[type=submit] {
+    background: -webkit-gradient(linear,left top,left bottom,from(#d6dadc),to(#cdd2d4));
+    background: linear-gradient(180deg,#d6dadc 0,#cdd2d4);
+    border: none;
+    -webkit-box-shadow: 0 1px 0 #959da1;
+    box-shadow: 0 1px 0 #959da1;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 22px;
+    margin: 8px 4px 0 0;
+    padding: 5px 16px;
+    text-align: center;
+}
+
+input.mod-compact {
+    min-height: 32px;
+    padding: 4px 16px;
+    vertical-align: top;
+}
+
+input.mod-compact, input.mod-no-top-bottom-margin {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+.icon-lg, .icon-sm {
+    color: #999;
+    padding: 3px;
+}
+
+.icon-lg {
+    height: 32px;
+    font-size: 20px;
+    line-height: 30px;
+    width: 30px;
+}
+
+.icon-lg, .icon-sm {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    font-family: trellicons;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+}
+
+element.style {
+    overflow: hidden;
+    word-wrap: break-word;
+    resize: none;
+    height: 54px;
+}
+textarea.list-card-composer-textarea, textarea.list-card-composer-textarea:focus {
+    background: none;
+    border: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    height: auto;
+    margin-bottom: 4px;
+    max-height: 162px;
+    min-height: 54px;
+    overflow-y: auto;
+    padding: 0;
+    width: 300px;
+}
+
+.textarea {
+    resize: vertical;
+    -webkit-transition: background 85ms ease-in,border-color 85ms ease-in;
+    transition: background 85ms ease-in,border-color 85ms ease-in;
 }
