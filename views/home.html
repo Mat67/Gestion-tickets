@@ -18,14 +18,21 @@
                 <input class="primary confirm mod-compact js-add-card" type="submit" value="Ajouter">
                 <i class="material-icons icon-lg" ng-click="annulerSaisie()">clear</i>
             </div>
+
             <div class="cc-controls-section mod-right">
-                <i class="material-icons icon-lg">menu</i>
+                <div class="btn-group dropup">
+
+                    <i class="material-icons icon-lg dropdown-toggle" data-toggle="dropdown">menu</i>
+
+                    <div class="dropdown-menu">
+                        <h6 class="dropdown-header">Dropdown header</h6>
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <a class="open-card-composer" ng-show="ajoutCarteVisible()" ng-click="demarrerSaisie()">Ajouter une carte…</a>
 </div>
-
-
-

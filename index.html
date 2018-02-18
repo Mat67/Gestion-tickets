@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html ng-app='app'>
+<html ng-app='app' lang="fr">
 <head>
     <title>Angular Todo Chrome Extension</title>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <div ng-include="::'views/home.html'"></div>
-    <script src="/node_modules/angular/angular.js"></script>
-    <script src="/node_modules/underscore/underscore.js"></script>
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/underscore/underscore.js"></script>
     <script type="text/javascript" src="app/app.js"></script>
     <script type="text/javascript" src="app/cardComponent.js"></script>
     <script type="text/javascript" src="app/trelloController.js"></script>
     <script type="text/javascript" src="app/trelloService.js"></script>
     <script type="text/javascript" src="app/glpiService.js"></script>
     <script type="text/javascript" src="app/browserService.js"></script>
-    
+    <div ng-include="::'views/home.html'"></div>
 </body>
 </html>
