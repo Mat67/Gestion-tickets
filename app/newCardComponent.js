@@ -7,17 +7,21 @@ angular.module('app').component('newCard', {
     },
     controller: function newCardComponent($scope, trelloService) {
         $scope.members = []
+        $scope.carte = {
+            members: []
+        }
+
         var modeSelectionMembres = false
         var modeSelectionEtiquettes = false
 
         $scope.annulerSaisie = this.annulerSaisie
 
         $scope.selectionMembres = function selectionMembres () {
-            modeSelectionMembres = true;
+            modeSelectionMembres = true
         }
 
         $scope.selectionEtiquettes = function selectionEtiquettes() {
-            modeSelectionEtiquettes = true;
+            modeSelectionEtiquettes = true
         }
 
         $scope.popopPremierNiveauVisible = function popopPremierNiveauVisible () {
@@ -37,8 +41,18 @@ angular.module('app').component('newCard', {
             modeSelectionEtiquettes = false;
         }
 
-        $scope.isChecked = function isChecked() {
-            return 'checked'
+        $scope.isChecked = function isChecked(member) {
+            if ($scope.carte.members && _.contains($scope.carte.members, member.id ))
+                return 'checked'
+            
+            return ''
+        }
+
+        $scope.performCheck = function performCheck(member) {
+            if ($scope.carte.members && _.contains($scope.carte.members, member.id ))
+                $scope.carte.members = _.filter($scope.carte.members, function(m){ return m !== member.id });
+            else 
+                $scope.carte.members.push(member.id)
         }
 
         trelloService.getMembers().then(function (result) {

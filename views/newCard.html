@@ -40,12 +40,12 @@
 
                     <div ng-show="selectionMembresVisible()">
                         <div class="list-card-members">
-                            <div class="member" ng-repeat="member in members">
+                            <div class="member" ng-repeat="member in members" ng-click="performCheck(member)">
                                 <span class="member-initials" title="{{ member.fullName }} ({{ member.username }})">
                                     {{member.initials}}
                                 </span>
 
-                                <i class="material-icons" ng-class="isChecked()">check</i>
+                                <i class="material-icons checked" ng-show="isChecked(member)" >check</i>
 
                             </div>
                         </div>
