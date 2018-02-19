@@ -4,61 +4,9 @@
     </div>
 
 
-    <div class="card-composer" ng-show="saisieVisible()">
-        <div class="list-card">
-            <div class="list-card-details ">
-                <div class="list-card-labels"></div>
-                <textarea class="list-card-composer-textarea" dir="auto" placeholder="" style="overflow: hidden; word-wrap: break-word; resize: none; height: 54px;"></textarea>
-                <div class="list-card-members"></div>
-            </div>
-        </div>
+    <new-card ng-show="saisieVisible()" annuler="annulerSaisie">
 
-        <div class="cc-controls u-clearfix">
-            <div class="cc-controls-section">
-                <input class="primary confirm mod-compact js-add-card" type="submit" value="Ajouter">
-                <i class="material-icons icon-lg" ng-click="annulerSaisie()">clear</i>
-            </div>
-
-            <div class="cc-controls-section mod-right">
-                <div class="dropleft">
-
-                    <i class="material-icons icon-lg" data-toggle="dropdown">menu</i>
-
-                    <div class="dropdown-menu keep-open-on-click dropdownSize" role="menu">
-                        <h6 class="dropdown-header container">
-                            <div class="row">
-                                <div class="col">
-                                    <i class="material-icons icon-lg mod-left" ng-click="retour()">chevron_left</i>
-                                </div>
-                                <div class="col">
-                                    <span>options</span>
-                                </div>
-                                <div class="col">
-                                    <i class="material-icons icon-lg" ng-click="closeDropup()">clear</i>
-                                </div>
-                            </div>
-                        </h6>
-                        <div ng-show="popopPremierNiveauVisible()">
-                            
-                            <a class="dropdown-item" href="#" ng-click="selectionMembres()">Membres</a>
-                            <a class="dropdown-item" href="#" ng-click="selectionEtiquettes()">Etiquettes</a>
-                        </div>
-
-                        <div ng-show="selectionMembresVisible()">
-                            <div class="list-card-members">
-                                <div class="member" ng-repeat="member in members">
-                                    <span class="member-initials" title="{{ member.fullName }} ({{ member.username }})">
-                                        {{member.initials}}
-                                        <i class="material-icons icon-lg" ng-click="closeDropup()">clear</i>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </new-card>
 
     <a class="open-card-composer" ng-show="ajoutCarteVisible()" ng-click="demarrerSaisie()">Ajouter une carte…</a>
 </div>

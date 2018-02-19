@@ -2,11 +2,8 @@
 
 angular.module('app').controller('trelloController', function ($scope, trelloService, glpiService) {
     $scope.cartes = []
-    $scope.members = []
-    $scope.test = 'fdf'
+
     var modeAJoutCarte = false
-    var modeSelectionMembres = false
-    var modeSelectionEtiquettes = false
 
     $scope.saisieVisible = function saisieVisible () {
         return modeAJoutCarte
@@ -24,40 +21,6 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
         modeAJoutCarte = false
     }
 
-    $scope.selectionMembres = function selectionMembres () {
-        modeSelectionMembres = true;
-    }
-
-    $scope.selectionEtiquettes = function selectionEtiquettes() {
-        modeSelectionEtiquettes = true;
-    }
-
-    $scope.popopPremierNiveauVisible = function popopPremierNiveauVisible () {
-        return !modeSelectionMembres && !modeSelectionEtiquettes
-    }
-
-    $scope.selectionMembresVisible = function selectionMembresVisible () {
-        return modeSelectionMembres
-    }
-
-    $scope.selectionEtiquettesVisible = function selectionEtiquettesVisible () {
-        return modeSelectionEtiquettes
-    }
-
-    $scope.retour = function retour() {
-        modeSelectionMembres = false
-        modeSelectionEtiquettes = false;
-    }
-
-    $scope.closeDropup = function closeDropup() {
-        
-    }
-
-    trelloService.getMembers().then(function (result) {
-        $scope.members = result
-    })
-
-    var tablink
     var url = window.location.toString()
 
     chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {

@@ -419,9 +419,24 @@ element.style {
     height: 54px;
 }
 
-.size {
+.dropdownSize {
     max-width: 250px;
     min-width: 250px;
+}
+
+.checked {
+    height: 18px;
+    font-size: 12px;
+    line-height: 18px;
+    width: 19px;
+    border-radius: 3px;
+    background-color: #298fca;
+    bottom: 0;
+    color: #fff;
+    display: block;
+    padding: 0;
+    right: 0;
+    top: auto;
 }
 
 textarea.list-card-composer-textarea, textarea.list-card-composer-textarea:focus {
