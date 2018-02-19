@@ -418,6 +418,12 @@ element.style {
     resize: none;
     height: 54px;
 }
+
+.size {
+    max-width: 250px;
+    min-width: 250px;
+}
+
 textarea.list-card-composer-textarea, textarea.list-card-composer-textarea:focus {
     background: none;
     border: none;

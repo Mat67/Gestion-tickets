@@ -1,7 +1,9 @@
-'use strict'
+// 'use strict'
 
 angular.module('app').controller('trelloController', function ($scope, trelloService, glpiService) {
     $scope.cartes = []
+    $scope.members = []
+    $scope.test = 'fdf'
     var modeAJoutCarte = false
     var modeSelectionMembres = false
     var modeSelectionEtiquettes = false
@@ -42,6 +44,19 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
         return modeSelectionEtiquettes
     }
 
+    $scope.retour = function retour() {
+        modeSelectionMembres = false
+        modeSelectionEtiquettes = false;
+    }
+
+    $scope.closeDropup = function closeDropup() {
+        
+    }
+
+    trelloService.getMembers().then(function (result) {
+        $scope.members = result
+    })
+
     var tablink
     var url = window.location.toString()
 
@@ -63,5 +78,5 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
 })
 
 $(document).on('click', '.dropdown-menu', function(e) {
-    if ($(this).hasClass('keep-open-on-click')) { e.stopPropagation(); }
+    if ($(this).hasClass('keep-open-on-click')) { if (e.target.outerText !== 'clear') e.stopPropagation(); }
 });

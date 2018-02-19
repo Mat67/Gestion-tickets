@@ -24,15 +24,35 @@
 
                     <i class="material-icons icon-lg" data-toggle="dropdown">menu</i>
 
-                    <div class="dropdown-menu keep-open-on-click" role="menu">
+                    <div class="dropdown-menu keep-open-on-click dropdownSize" role="menu">
+                        <h6 class="dropdown-header container">
+                            <div class="row">
+                                <div class="col">
+                                    <i class="material-icons icon-lg mod-left" ng-click="retour()">chevron_left</i>
+                                </div>
+                                <div class="col">
+                                    <span>options</span>
+                                </div>
+                                <div class="col">
+                                    <i class="material-icons icon-lg" ng-click="closeDropup()">clear</i>
+                                </div>
+                            </div>
+                        </h6>
                         <div ng-show="popopPremierNiveauVisible()">
-                            <h6 class="dropdown-header">options</h6>
-                            <div class="dropdown-submenu pull-left" ng-click="selectionMembres()">Membres</div>
+                            
+                            <a class="dropdown-item" href="#" ng-click="selectionMembres()">Membres</a>
                             <a class="dropdown-item" href="#" ng-click="selectionEtiquettes()">Etiquettes</a>
                         </div>
 
                         <div ng-show="selectionMembresVisible()">
-                            <div>test</div>>
+                            <div class="list-card-members">
+                                <div class="member" ng-repeat="member in members">
+                                    <span class="member-initials" title="{{ member.fullName }} ({{ member.username }})">
+                                        {{member.initials}}
+                                        <i class="material-icons icon-lg" ng-click="closeDropup()">clear</i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

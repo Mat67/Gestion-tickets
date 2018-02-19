@@ -3,7 +3,8 @@
 angular.module('app').service('trelloService', function ($http, $q) {
     var service = {
         rechercheCartes: rechercheCartesImpl,
-        getMember: getMemberImpl
+        getMembers: getMembersImpl,
+        getMember: getMemberImpl,
     }
     var token = '87bb626434f4542e68649ac0492c53cd452f2c14e98601bdb352d16d2866aae3'
     var key = 'f591bda7cc554fec77c38cc22923b547'
@@ -27,6 +28,14 @@ angular.module('app').service('trelloService', function ($http, $q) {
                 })
             })
             return cartes
+        })
+    }
+
+    function getMembersImpl() {
+        var requete = buildRequete('boards/7iR1688Y/members?fields=all')
+        
+        return $http.get(requete).then(function (result) {
+            return result.data
         })
     }
 
