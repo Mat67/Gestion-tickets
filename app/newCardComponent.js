@@ -2,12 +2,15 @@
 
 angular.module('app').component('newCard', {
     bindings: {
-        annulerSaisie: '='
+        annuler: '=',
+        valider: '='
     },
     controller: function newCardComponent($scope, trelloService) {
         $scope.members = []
         var modeSelectionMembres = false
         var modeSelectionEtiquettes = false
+
+        $scope.annulerSaisie = this.annulerSaisie
 
         $scope.selectionMembres = function selectionMembres () {
             modeSelectionMembres = true;
