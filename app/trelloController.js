@@ -21,6 +21,10 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
         modeAJoutCarte = false
     }
 
+    $scope.validerSaisie = function validerSaisie() {
+        modeAJoutCarte = false
+    }
+
     var url = window.location.toString()
 
     chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {

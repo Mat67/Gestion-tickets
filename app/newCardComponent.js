@@ -3,11 +3,13 @@
 angular.module('app').component('newCard', {
     bindings: {
         annuler: '=',
-        valider: '='
+        valider: '=',
     },
     controller: function newCardComponent($scope, trelloService) {
         $scope.members = []
         $scope.carte = {
+            titre: '',
+            labels: '',
             members: []
         }
 
@@ -53,6 +55,16 @@ angular.module('app').component('newCard', {
                 $scope.carte.members = _.filter($scope.carte.members, function(m){ return m !== member.id });
             else 
                 $scope.carte.members.push(member.id)
+        }
+
+        $scope.ajouter = function ajouter() {
+            $scope.$ctrl.valider()
+            
+            trelloService.createCard($scope.carte.titre, 
+                $scope.carte.labels,
+                $scope.carte.members).then(function (resultat) {
+                    $scope.$ctrl.valider(resultat)
+                })
         }
 
         trelloService.getMembers().then(function (result) {

@@ -2,14 +2,14 @@
     <div class="list-card">
         <div class="list-card-details ">
             <div class="list-card-labels"></div>
-            <textarea class="list-card-composer-textarea" dir="auto" placeholder="" style="overflow: hidden; word-wrap: break-word; resize: none; height: 54px;"></textarea>
+            <textarea ng-model="carte.titre" class="list-card-composer-textarea" dir="auto" placeholder="" style="overflow: hidden; word-wrap: break-word; resize: none; height: 54px;"></textarea>
             <div class="list-card-members"></div>
         </div>
     </div>
 
     <div class="cc-controls u-clearfix">
         <div class="cc-controls-section">
-            <input class="primary confirm mod-compact js-add-card" type="submit" value="Ajouter">
+            <input class="primary confirm mod-compact" type="submit" value="Ajouter" ng-click="ajouter()"/>
             <i class="material-icons icon-lg" ng-click="$ctrl.annuler()">clear</i>
         </div>
 
