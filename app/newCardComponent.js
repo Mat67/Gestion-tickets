@@ -4,14 +4,24 @@ angular.module('app').component('newCard', {
     bindings: {
         annuler: '=',
         valider: '=',
+        ticketId: '@'
     },
     controller: function newCardComponent($scope, trelloService) {
         $scope.members = []
-        $scope.carte = {
-            titre: '',
-            labels: '',
-            members: []
+
+        function newCard() {
+            var titre = ''
+            if ($scope.$ctrl.ticketId)
+                titre = 'GLPI_' + $scope.$ctrl.ticketId
+            
+            return {
+                titre: titre,
+                labels: '',
+                members: []
+            }
         }
+
+        $scope.carte = newCard()
 
         var modeSelectionMembres = false
         var modeSelectionEtiquettes = false
@@ -63,6 +73,7 @@ angular.module('app').component('newCard', {
             trelloService.createCard($scope.carte.titre, 
                 $scope.carte.labels,
                 $scope.carte.members).then(function (resultat) {
+                    $scope.carte = {}
                     $scope.$ctrl.valider(resultat)
                 })
         }

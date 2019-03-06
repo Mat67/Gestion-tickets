@@ -31,12 +31,13 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
         var activeTab = tabs[0]
 
         if (glpiService.isGlpiPage(activeTab.url)) {
-            var idTicket = glpiService.getTicketId(activeTab.url)
+            $scope.idTicket = glpiService.getTicketId(activeTab.url)
 
-            if (!idTicket) {
+
+            if (!$scope.idTicket) {
                 $scope.cartes = []
             } else {
-                trelloService.rechercheCartes(idTicket).then(function (result) {
+                trelloService.rechercheCartes($scope.idTicket).then(function (result) {
                     $scope.cartes = result
                 })
             }

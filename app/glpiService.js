@@ -7,7 +7,7 @@ angular.module('app').service('glpiService', function ($http, $q) {
     }
 
     function isGlpiPageImpl(url) {
-        if (url && url.indexOf('helpdesk-groupe-burrus') !== -1)
+        if (url && url.indexOf('helpdesk.groupe-burrus') !== -1)
             return true
         
         return false
@@ -15,7 +15,7 @@ angular.module('app').service('glpiService', function ($http, $q) {
 
     function getTicketIdImpl(url) {
         if (url) {
-            var regex2 = new RegExp('.*helpdesk-groupe-burrus.*id=(.*)', 'g')
+            var regex2 = new RegExp('.*helpdesk.groupe-burrus.*id=(.*)', 'g')
             var resultat = regex2.exec(url)
             if (resultat && resultat.length > 0) {
                 return resultat[1]

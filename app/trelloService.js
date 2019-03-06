@@ -49,16 +49,21 @@ angular.module('app').service('trelloService', function ($http, $q) {
     }
 
     function createCardImpl(titre, labels, members) {
-        var idList = '541c3b1a4298bfc8767d2643'
+        //var idList = '541c3b1a4298bfc8767d2643' // Planifie
+        var idList = '577a0d36360c9ab3098b59b1' // Welcome Board
         
-        var requete = buildRequete('cards?name=' + titre + 
-            '&idList=' + idList + 
-            '&idMembers=' + members)// + 
-            //'&idLabels=' + labels)
-        console.log(requete)
-        // return $http.post(requete).then(function (result) {
-        //     return result.data
-        // })
+        var stringRequete = 'cards?name=' + titre + '&idList=' + idList
+        if (members)
+            stringRequete += '&idMembers=' + members
+
+        if (labels)
+            stringRequete += '&labels=' + labels
+
+        var requete = buildRequete(stringRequete)
+        //console.log(requete)
+        return $http.post(requete).then(function (result) {
+             return result.data
+         })
     }
 
     function getMemberMemoizeImpl(idMember) {
