@@ -29,6 +29,20 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // })
 })
 
+chrome.extension.onRequest.addListener(
+    function(request, sender, sendResponse) {
+        if(request.method == "getText"){
+            sendResponse({data: document.all[0].innerText, method: "getText"}); //same as innerText
+        }
+    }
+)
+
+chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
+    if (request.action == "getDOM")
+      sendResponse({dom: "The dom that you want to get"});
+    else
+      sendResponse({}); // Send nothing..
+   });
 
 /*
 console.log('init')

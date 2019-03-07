@@ -8,15 +8,26 @@ angular.module('app').component('newCard', {
     },
     controller: function newCardComponent($scope, trelloService) {
         $scope.members = []
+        $scope.titre = '' 
+
+        chrome.tabs.getSelected(null, function(tab) {
+            chrome.tabs.sendRequest(tab.id, {method: "getText"}, function(response) {
+                if(response.method=="getText"){
+                    $scope.carte.titre = response.titre
+
+                }
+            });
+        });
 
         this.$onInit=function() {
+            $scope.ticket = this.ticket
             $scope.carte = newCard(this.ticket)
         }
 
         function newCard(ticket) {
             var titre = ''
             if ($scope.$ctrl.ticket)
-                titre = 'GLPI_' + ticket
+                titre = 'GLPI_' + ticket + ' : ' + titre
 
             return {
                 titre: titre,

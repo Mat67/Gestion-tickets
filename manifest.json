@@ -16,6 +16,12 @@
     "default_title": "Your browser action title",
     "default_icon" : "images/logo.png"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/contentScript.js"]
+    }
+  ],
   
   "background": {
     "page": "backgroundIndex.html"
