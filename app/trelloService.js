@@ -1,39 +1,57 @@
 'use strict'
 
-angular.module('app').service('trelloService', function ($http, $q) {
+angular.module('app').service('trelloService', function ($http, $q, optionsService) {
     var service = {
         rechercheCartes: rechercheCartesImpl,
         getMembers: getMembersImpl,
         getMember: getMemberImpl,
-        createCard: createCardImpl,
+        createCard: createCardImpl
     }
-    var token = '87bb626434f4542e68649ac0492c53cd452f2c14e98601bdb352d16d2866aae3'
-    var key = 'f591bda7cc554fec77c38cc22923b547'
-    var apiTrello = 'https://api.trello.com/1/'
+
+    var options = { }
+
+    // var token = '87bb626434f4542e68649ac0492c53cd452f2c14e98601bdb352d16d2866aae3'
+    // var key = 'f591bda7cc554fec77c38cc22923b547'
+    // var apiTrello = 'https://api.trello.com/1/'
+
+    optionsService.charger().then(function (result) {
+        options = result
+    })
 
     function rechercheCartesImpl(idTicket) {
         var fields = 'name,url,idMembers,labels'
-        var requete = buildRequete('boards/7iR1688Y/cards?fields=all')
-        return $http.get(requete).then(function (result) {
-            var cartes = result.data
-            cartes = _.filter(cartes, function (f) {
-                return f.name.indexOf('GLPI_' + idTicket) !== -1
-            })
+        
 
-            _.forEach(cartes, function (c) {
-                c.members = []
-                _.forEach(c.idMembers, function (m) {
-                    service.getMember(m).then(function (result) {
-                        c.members.push(result)
+        var defer = $q.defer()
+
+        optionsService.charger().then(function (r) { 
+            options = r 
+        }).then(function (r) {
+            var requete = buildRequete('boards/' + options.board + '/cards?fields=all')
+            
+            $http.get(requete).then(function (result) {
+                var cartes = result.data
+                cartes = _.filter(cartes, function (f) {
+                    return f.name.indexOf('GLPI_' + idTicket) !== -1
+                })
+    
+                _.forEach(cartes, function (c) {
+                    c.members = []
+                    _.forEach(c.idMembers, function (m) {
+                        service.getMember(m).then(function (result) {
+                            c.members.push(result)
+                        })
                     })
                 })
+                defer.resolve(cartes)
             })
-            return cartes
         })
+
+        return defer.promise
     }
 
     function getMembersImpl() {
-        var requete = buildRequete('boards/7iR1688Y/members?fields=all')
+        var requete = buildRequete('boards/' + options.board + '//members?fields=all')
         
         return $http.get(requete).then(function (result) {
             return result.data
@@ -49,8 +67,9 @@ angular.module('app').service('trelloService', function ($http, $q) {
     }
 
     function createCardImpl(titre, labels, members) {
-        //var idList = '541c3b1a4298bfc8767d2643' // Planifie
-        var idList = '577a0d36360c9ab3098b59b1' // Welcome Board
+        // var idList = '541c3b1a4298bfc8767d2643' // Planifie
+        // 577a0d36360c9ab3098b59b1
+        var idList = options.idList // Welcome Board
         
         var stringRequete = 'cards?name=' + titre + '&idList=' + idList
         if (members)
@@ -86,7 +105,7 @@ angular.module('app').service('trelloService', function ($http, $q) {
     }
 
     function buildRequete(requete) {
-        return apiTrello + requete + '&key=' + key + '&token=' + token;
+        return options.apiTrello + requete + '&key=' + options.key + '&token=' + options.token;
     }
 
     return service;
