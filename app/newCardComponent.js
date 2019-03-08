@@ -13,8 +13,7 @@ angular.module('app').component('newCard', {
         chrome.tabs.getSelected(null, function(tab) {
             chrome.tabs.sendRequest(tab.id, {method: "getText"}, function(response) {
                 if(response.method=="getText"){
-                    $scope.carte.titre = response.titre
-
+                    $scope.carte.titre = 'GLPI_' + ticket + ' : ' + response.titre
                 }
             });
         });
@@ -25,10 +24,6 @@ angular.module('app').component('newCard', {
         }
 
         function newCard(ticket) {
-            var titre = ''
-            if ($scope.$ctrl.ticket)
-                titre = 'GLPI_' + ticket + ' : ' + titre
-
             return {
                 titre: titre,
                 labels: '',

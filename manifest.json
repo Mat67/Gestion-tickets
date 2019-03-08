@@ -9,7 +9,8 @@
     "debugger",
     "storage",
     "contextMenus",
-    "webNavigation"
+    "webNavigation",
+    "storage"
   ],
   "browser_action": {
     "default_popup": "index.html",
@@ -22,6 +23,10 @@
       "js": ["scripts/contentScript.js"]
     }
   ],
+  "options_ui": {
+    "page": "views/options.html",
+    "open_in_tab": true
+  },
   
   "background": {
     "page": "backgroundIndex.html"

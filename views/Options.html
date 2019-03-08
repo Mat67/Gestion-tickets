@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app='app' lang="fr">
+<head>
+    <title>Angular Todo Chrome Extension</title>
+    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="../node_modules/underscore/underscore.js"></script>
+    <script type="text/javascript" src="../app/app.js"></script>
+    <script type="text/javascript" src="../app/cardComponent.js"></script>
+    <script type="text/javascript" src="../app/newCardComponent.js"></script>
+    <script type="text/javascript" src="../app/trelloController.js"></script>
+    <script type="text/javascript" src="../app/trelloService.js"></script>
+    <script type="text/javascript" src="../app/optionsController.js"></script>
+    <script type="text/javascript" src="../app/optionsService.js"></script>
+    <script type="text/javascript" src="../app/glpiService.js"></script>
+    <script type="text/javascript" src="../app/browserService.js"></script>
+    <script type="text/javascript" src="../scripts/contentScript.js"></script>
+    
+    <div ng-controller="optionsController">
+      <h1>Options</h1>
+      <div>
+        <label for="basic-url">Url du gestionnaire de ticket</label>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.urlGestionnaireTicket">
+      </div>
+
+      <div>
+          <label for="basic-url">Prefix utilsiateur trello à affecter lors de la création d'une carte</label>
+          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.prefixeUtilisateurTrello">
+      </div>
+
+      <button ng-click="sauvegarder()">Sauvegarder</button>
+    </div>
+</body>
+</html>
+
