@@ -14,21 +14,12 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
     // var key = 'f591bda7cc554fec77c38cc22923b547'
     // var apiTrello = 'https://api.trello.com/1/'
 
-    optionsService.charger().then(function (result) {
-        options = result
-    })
-
     function rechercheCartesImpl(idTicket) {
         var fields = 'name,url,idMembers,labels'
         
-
         var defer = $q.defer()
 
-        optionsService.charger().then(function (r) { 
-            options = r 
-        }).then(function (r) {
-            var requete = buildRequete('boards/' + options.board + '/cards?fields=all')
-            
+        buildRequete('boards/{board}/cards?fields=all').then(function (requete) { 
             $http.get(requete).then(function (result) {
                 var cartes = result.data
                 cartes = _.filter(cartes, function (f) {
@@ -51,38 +42,49 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
     }
 
     function getMembersImpl() {
-        var requete = buildRequete('boards/' + options.board + '//members?fields=all')
-        
-        return $http.get(requete).then(function (result) {
-            return result.data
+        var defer = $q.defer()
+
+        buildRequete('boards/{board}/members?fields=all').then(function (requete) { 
+            $http.get(requete).then(function (result) {
+                defer.resolve(result.data)
+            })
         })
+        return defer.promise
     }
 
     function getMemberImpl(idMember) {
-        var requete = buildRequete('members/' + idMember + '?fields=all')
-        
-        return $http.get(requete).then(function (result) {
-            return result.data
+        var defer = $q.defer()
+
+        buildRequete('members/' + idMember + '?fields=all').then(function (requete) { 
+            $http.get(requete).then(function (result) {
+                defer.resolve(result.data)
+            })
         })
+
+        return defer.promise
     }
 
     function createCardImpl(titre, labels, members) {
+        var defer = $q.defer()
+
         // var idList = '541c3b1a4298bfc8767d2643' // Planifie
         // 577a0d36360c9ab3098b59b1
-        var idList = options.idList // Welcome Board
+        //var idList = options.idList // Welcome Board
         
-        var stringRequete = 'cards?name=' + titre + '&idList=' + idList
+        var stringRequete = 'cards?name=' + titre + '&idList={idList}'
         if (members)
             stringRequete += '&idMembers=' + members
 
         if (labels)
             stringRequete += '&labels=' + labels
 
-        var requete = buildRequete(stringRequete)
-        //console.log(requete)
-        return $http.post(requete).then(function (result) {
-             return result.data
-         })
+        buildRequete(stringRequete).then(function (requete) {
+            $http.post(requete).then(function (result) {
+                defer.resolve(result.data)
+            })
+        })
+        
+        return defer.promise
     }
 
     function getMemberMemoizeImpl(idMember) {
@@ -105,7 +107,18 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
     }
 
     function buildRequete(requete) {
-        return options.apiTrello + requete + '&key=' + options.key + '&token=' + options.token;
+        var defer = $q.defer()
+
+        optionsService.charger().then(function (r) { 
+            options = r 
+        }).then(function (r) {
+            requete = requete.replace('{board}', options.board)
+            requete = requete.replace('{idList}', options.idList)
+            
+            defer.resolve(options.apiTrello + requete + '&key=' + options.key + '&token=' + options.token)
+        })
+
+        return defer.promise
     }
 
     return service;
