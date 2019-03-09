@@ -1,10 +1,12 @@
 'use strict'
 
-angular.module('app').controller('optionsController', function ($scope, optionsService) {
+angular.module('app').controller('optionsController', function ($scope, optionsService, trelloService) {
     $scope.options = {
         urlGestionnaireTicket: '',
-        utilisateurId: '',
+        memberId: '',
     }
+
+    $scope.selectedMember = {}
     
     $scope.sauvegarder = function () {
         optionsService.sauvegarder($scope.options).then(function () {
@@ -18,5 +20,16 @@ angular.module('app').controller('optionsController', function ($scope, optionsS
         })
     }
 
+    function chargerMembres() {
+        trelloService.getMembers().then(function (r) {
+            $scope.members = r
+        })
+    }
+
+    $scope.onChanged = function onChanged ($event) {
+        $scope.options.memberId = $event
+    }
+
     $scope.charger()
+    chargerMembres()
 })
