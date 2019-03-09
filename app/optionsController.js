@@ -2,7 +2,7 @@
 
 angular.module('app').controller('optionsController', function ($scope, optionsService, trelloService) {
     $scope.options = {
-        urlGestionnaireTicket: '',
+        glpiTicketRegex: '',
         memberId: '',
     }
 

@@ -8,7 +8,7 @@ angular.module('app').service('optionsService', function ($q) {
 
     function sauvegarderImpl(options) {
         var options = {
-            urlGestionnaireTicket: options.urlGestionnaireTicket,
+            glpiTicketRegex: options.glpiTicketRegex,
             memberId: options.memberId,
             apiTrello: options.apiTrello,
             key: options.key,
@@ -29,7 +29,7 @@ angular.module('app').service('optionsService', function ($q) {
 
     function chargerImpl() {
         var options = {
-            urlGestionnaireTicket: '',
+            glpiTicketRegex: '',
             memberId: '' 
         }
         
@@ -37,7 +37,7 @@ angular.module('app').service('optionsService', function ($q) {
         var promise = defered.promise
 
         chrome.storage.sync.get(null, function(item) {
-            options.urlGestionnaireTicket = item.urlGestionnaireTicket
+            options.glpiTicketRegex = item.glpiTicketRegex
             options.memberId = item.memberId
             options.apiTrello = item.apiTrello
             options.key = item.key

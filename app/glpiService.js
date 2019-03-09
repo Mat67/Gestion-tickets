@@ -25,9 +25,9 @@ angular.module('app').service('glpiService', function ($http, $q, optionsService
         
         var ticketId = undefined
 
-        optionsService.charger().then(function (r) {
+        optionsService.charger().then(function (options) {
             if (url) {
-                var regex2 = new RegExp('.*helpdesk.groupe-burrus.*id=(.*)', 'g')
+                var regex2 = new RegExp(options.glpiTicketRegex, 'g')
                 var resultat = regex2.exec(url)
                 
                 if (resultat && resultat.length > 0) {

@@ -26,12 +26,12 @@
     <div ng-controller="optionsController">
       <h1>Options</h1>
       <div>
-        <label for="basic-url">Url du gestionnaire de ticket</label>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.urlGestionnaireTicket">
+        <label for="basic-url">Regex permettant d'extraire l'id du ticket de l'url</label>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.glpiTicketRegex">
       </div>
 
       <div>
-        <label for="basic-url">Prefix utilsiateur trello à affecter lors de la création d'une carte</label>
+        <label for="basic-url">Utilisateur trello à affecter automatiquement lors de la création d'une carte</label>
         
         <select class="custom-select d-block w-100" ng-model="options.memberId" 
           ng-options="member.id as member.initials for member in members" 
