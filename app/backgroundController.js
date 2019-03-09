@@ -5,16 +5,15 @@ angular.module('app').controller('backgroundController', function ($scope, trell
         if (changeInfo.status === 'loading')
         
         chrome.tabs.getSelected(null, function(tab) {
-            if (!glpiService.isGlpiPage(tab.url)) {
-                browserService.disable(tabId)
-            }
-            else
-            {
-                var idTicket = glpiService.getTicketId(tab.url)
-                trelloService.rechercheCartes(idTicket).then(function (res) {
-                    browserService.setResultsCount(res.length, tabId)
-                })
-            }
+            glpiService.getTicketId(tab.url).then(function (ticketId) {
+                if (!ticketId) {
+                    browserService.disable(tabId)
+                } else {
+                    trelloService.rechercheCartes(ticketId).then(function (res) {
+                        browserService.setResultsCount(res.length, tabId)
+                    })
+                }
+            })
         })
     })
 })

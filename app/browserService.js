@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('app').service('browserService', function ($http, $q) {
+angular.module('app').service('browserService', function ($http, $q, optionsService) {
     var service = {
         disable: disableImpl,
         setResultsCount: setResultsCountImpl

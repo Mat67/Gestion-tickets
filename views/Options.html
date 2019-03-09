@@ -31,16 +31,11 @@
       </div>
 
       <div>
-          <label for="basic-url">Prefix utilsiateur trello à affecter lors de la création d'une carte</label>
-          <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.memberId">
-      </div>
-
-      <div>
         <label for="basic-url">Prefix utilsiateur trello à affecter lors de la création d'une carte</label>
         
         <select class="custom-select d-block w-100" ng-model="options.memberId" 
           ng-options="member.id as member.initials for member in members" 
-          ng-change="changeValue(options.memberId)" />
+          ng-change="changeValue(options.memberId)" ></select>
       </div>
 
       <div>

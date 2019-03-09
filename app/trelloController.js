@@ -30,9 +30,8 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
     chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
         var activeTab = tabs[0]
 
-        if (glpiService.isGlpiPage(activeTab.url)) {
-            $scope.idTicket = glpiService.getTicketId(activeTab.url)
-
+        glpiService.getTicketId(activeTab.url).then(function (ticketId) {
+            $scope.idTicket = ticketId
 
             if (!$scope.idTicket) {
                 $scope.cartes = []
@@ -41,7 +40,7 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
                     $scope.cartes = result
                 })
             }
-        }
+        })
     })
 })
 
