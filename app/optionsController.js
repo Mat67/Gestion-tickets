@@ -3,7 +3,7 @@
 angular.module('app').controller('optionsController', function ($scope, optionsService) {
     $scope.options = {
         urlGestionnaireTicket: '',
-        prefixeUtilisateurTrello: '',
+        utilisateurId: '',
     }
     
     $scope.sauvegarder = function () {

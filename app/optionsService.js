@@ -9,7 +9,7 @@ angular.module('app').service('optionsService', function ($q) {
     function sauvegarderImpl(options) {
         var options = {
             urlGestionnaireTicket: options.urlGestionnaireTicket,
-            prefixeUtilisateurTrello: options.prefixeUtilisateurTrello,
+            utilisateurId: options.utilisateurId,
             apiTrello: options.apiTrello,
             key: options.key,
             token: options.token,
@@ -30,7 +30,7 @@ angular.module('app').service('optionsService', function ($q) {
     function chargerImpl() {
         var options = {
             urlGestionnaireTicket: '',
-            prefixeUtilisateurTrello: '' 
+            utilisateurId: '' 
         }
         
         var defered = $q.defer()
@@ -38,7 +38,7 @@ angular.module('app').service('optionsService', function ($q) {
 
         chrome.storage.sync.get(null, function(item) {
             options.urlGestionnaireTicket = item.urlGestionnaireTicket
-            options.prefixeUtilisateurTrello = item.prefixeUtilisateurTrello
+            options.utilisateurId = item.utilisateurId
             options.apiTrello = item.apiTrello
             options.key = item.key
             options.token = item.token

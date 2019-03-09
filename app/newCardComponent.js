@@ -6,14 +6,14 @@ angular.module('app').component('newCard', {
         valider: '=',
         ticket: '<'
     },
-    controller: function newCardComponent($scope, trelloService) {
+    controller: function newCardComponent($scope, trelloService, optionsService) {
         $scope.members = []
         $scope.titre = '' 
 
         chrome.tabs.getSelected(null, function(tab) {
             chrome.tabs.sendRequest(tab.id, {method: "getText"}, function(response) {
                 if(response.method=="getText"){
-                    $scope.carte.titre = 'GLPI_' + ticket + ' : ' + response.titre
+                    $scope.carte.titre = 'GLPI_' + $scope.ticket + ' : ' + response.titre
                 }
             });
         });
@@ -24,8 +24,12 @@ angular.module('app').component('newCard', {
         }
 
         function newCard(ticket) {
+            optionsService.charger().then(function (r) {
+                $scope.carte.members.push(r.utilisateurId)
+            })
+            
             return {
-                titre: titre,
+                titre: '',
                 labels: '',
                 members: []
             }

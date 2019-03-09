@@ -115,7 +115,9 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
             requete = requete.replace('{board}', options.board)
             requete = requete.replace('{idList}', options.idList)
             
-            defer.resolve(options.apiTrello + requete + '&key=' + options.key + '&token=' + options.token)
+            requete = options.apiTrello + requete + '&key=' + options.key + '&token=' + options.token
+            
+            defer.resolve(encodeURI(requete))
         })
 
         return defer.promise
