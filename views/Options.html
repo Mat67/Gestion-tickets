@@ -62,7 +62,7 @@
         <label for="basic-url">Etiquette à affecter automatiquement lors de la création d'une carte</label>
         
         <select class="custom-select d-block w-100" ng-model="options.labelId" 
-          ng-options="member.id as label.name for label in labels" 
+          ng-options="label.id as label.name for label in labels" 
           ng-change="changeValue(options.labelId)" ></select>
       </div>
       

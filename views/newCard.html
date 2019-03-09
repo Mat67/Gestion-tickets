@@ -50,6 +50,19 @@
                             </div>
                         </div>
                     </div>
+
+                    <div ng-show="selectionEtiquettesVisible()">
+                        <div class="list-card-labels">
+                            <div class="label" ng-repeat="label in labels" ng-click="performCheck(label)">
+                                <span class="member-initials" title="{{ label.name }} ({{ label.name }})">
+                                    {{member.initials}}
+                                </span>
+
+                                <i class="material-icons checked" ng-show="isChecked(label)" >check</i>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

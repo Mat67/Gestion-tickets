@@ -115,7 +115,7 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
             stringRequete += '&idMembers=' + members
 
         if (labels)
-            stringRequete += '&labels=' + labels
+            stringRequete += '&idLabels=' + labels
 
         buildRequete(stringRequete).then(function (requete) {
             $http.post(requete).then(function (result) {

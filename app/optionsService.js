@@ -7,16 +7,6 @@ angular.module('app').service('optionsService', function ($q) {
     }
 
     function sauvegarderImpl(options) {
-        var options = {
-            glpiTicketRegex: options.glpiTicketRegex,
-            memberId: options.memberId,
-            apiTrello: options.apiTrello,
-            key: options.key,
-            token: options.token,
-            board: options.board,
-            idList: options.idList
-        }
-
         var defered = $q.defer()
         var promise = defered.promise
         
@@ -36,21 +26,12 @@ angular.module('app').service('optionsService', function ($q) {
         var defered = $q.defer()
         var promise = defered.promise
 
-        chrome.storage.sync.get(null, function(item) {
-            options.glpiTicketRegex = item.glpiTicketRegex
-            options.memberId = item.memberId
-            options.apiTrello = item.apiTrello
-            options.key = item.key
-            options.token = item.token
-            options.board = item.board
-            options.idList = item.idList
-            
+        chrome.storage.sync.get(null, function(options) {
             defered.resolve(options)
         })
 
         return promise
     }
-
 
     return service
 })

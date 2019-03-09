@@ -31,7 +31,7 @@ angular.module('app').component('newCard', {
             
             return {
                 titre: '',
-                labels: '',
+                labels: [],
                 members: []
             }
         }
@@ -93,6 +93,10 @@ angular.module('app').component('newCard', {
 
         trelloService.getMembers().then(function (result) {
             $scope.members = result
+        })
+
+        trelloService.getLabels().then(function (result) {
+            $scope.labels = result
         })
     },
     templateUrl: function() {
