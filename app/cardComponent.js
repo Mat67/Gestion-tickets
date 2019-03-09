@@ -6,14 +6,7 @@ angular.module('app').component('card', {
     },
     controller: function cardComponent() {
         this.labelColor = function (label) {
-            switch (label.color) {
-                case 'orange':
-                    return 'card-label-orange'
-                    break;
-            
-                default:
-                    break;
-            }
+            return 'card-label-' + label.color
         }
     },
     templateUrl: function() {

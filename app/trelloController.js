@@ -25,8 +25,6 @@ angular.module('app').controller('trelloController', function ($scope, trelloSer
         modeAJoutCarte = false
     }
 
-    var url = window.location.toString()
-
     chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
         var activeTab = tabs[0]
 

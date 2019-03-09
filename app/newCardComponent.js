@@ -26,6 +26,7 @@ angular.module('app').component('newCard', {
         function newCard(ticket) {
             optionsService.charger().then(function (r) {
                 $scope.carte.members.push(r.memberId)
+                $scope.carte.labels.push(r.labelId)
             })
             
             return {

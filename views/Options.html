@@ -31,30 +31,6 @@
       </div>
 
       <div>
-        <label for="basic-url">Utilisateur trello à affecter automatiquement lors de la création d'une carte</label>
-        
-        <select class="custom-select d-block w-100" ng-model="options.memberId" 
-          ng-options="member.id as member.initials for member in members" 
-          ng-change="changeValue(options.memberId)" ></select>
-      </div>
-
-      <div>
-        <label for="basic-url">list</label>
-        
-        <select class="custom-select d-block w-100" ng-model="options.board" 
-          ng-options="board.shortLink as board.name for board in boards" 
-          ng-change="changeValue(options.board)" ></select>
-      </div>
-
-      <div>
-        <label for="basic-url">list</label>
-        
-        <select class="custom-select d-block w-100" ng-model="options.idList" 
-          ng-options="list.id as list.name for list in lists" 
-          ng-change="changeValue(options.idList)" ></select>
-      </div>
-
-      <div>
         <label for="basic-url">api trello</label>
         <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.apiTrello">
       </div>
@@ -70,8 +46,33 @@
       </div>
 
       <div>
-        <label for="basic-url">board</label>
+        <label for="basic-url">Board short url (ex : 7iR1688Y)</label>
         <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.board">
+      </div>
+
+      <div>
+        <label for="basic-url">Utilisateur trello à affecter automatiquement lors de la création d'une carte</label>
+        
+        <select class="custom-select d-block w-100" ng-model="options.memberId" 
+          ng-options="member.id as member.initials for member in members" 
+          ng-change="changeValue(options.memberId)" ></select>
+      </div>
+
+      <div>
+        <label for="basic-url">Etiquette à affecter automatiquement lors de la création d'une carte</label>
+        
+        <select class="custom-select d-block w-100" ng-model="options.labelId" 
+          ng-options="member.id as label.name for label in labels" 
+          ng-change="changeValue(options.labelId)" ></select>
+      </div>
+      
+
+      <div>
+        <label for="basic-url">Sélectionner la liste</label>
+        
+        <select class="custom-select d-block w-100" ng-model="options.idList" 
+          ng-options="list.id as list.name for list in lists" 
+          ng-change="changeValue(options.idList)" ></select>
       </div>
 
       <button ng-click="sauvegarder()">Sauvegarder</button>

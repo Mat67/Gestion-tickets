@@ -10,7 +10,11 @@ angular.module('app').controller('optionsController', function ($scope, optionsS
     
     $scope.sauvegarder = function () {
         optionsService.sauvegarder($scope.options).then(function () {
+            chargerMembres()
+            chargerBoardListes()
+            chargerBoards()
             alert('sauvegarde effectuée')
+            
         })
     }
 
@@ -38,12 +42,15 @@ angular.module('app').controller('optionsController', function ($scope, optionsS
         })
     }
 
-    $scope.onChanged = function onChanged ($event) {
-        $scope.options.memberId = $event
+    function chargerLabels() {
+        trelloService.getLabels().then(function (r) {
+            $scope.labels = r
+        })
     }
 
     $scope.charger()
     chargerMembres()
+    chargerLabels()
     chargerBoardListes()
-    chargerBoards()
+    //chargerBoards()
 })

@@ -7,6 +7,7 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
         getBoardLists: getBoardListsImpl,
         getBoards: getBoardsImpl,
         getMember: getMemberImpl,
+        getLabels: getLabelsImpl,
         createCard: createCardImpl
     }
 
@@ -82,6 +83,18 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
         var defer = $q.defer()
 
         buildRequete('members/{member}/boards?fields=all').then(function (requete) { 
+            $http.get(requete).then(function (result) {
+                defer.resolve(result.data)
+            })
+        })
+
+        return defer.promise
+    }
+
+    function getLabelsImpl() {
+        var defer = $q.defer()
+
+        buildRequete('board/{board}/labels?fields=all').then(function (requete) { 
             $http.get(requete).then(function (result) {
                 defer.resolve(result.data)
             })
