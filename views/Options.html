@@ -39,6 +39,22 @@
       </div>
 
       <div>
+        <label for="basic-url">list</label>
+        
+        <select class="custom-select d-block w-100" ng-model="options.board" 
+          ng-options="board.shortLink as board.name for board in boards" 
+          ng-change="changeValue(options.board)" ></select>
+      </div>
+
+      <div>
+        <label for="basic-url">list</label>
+        
+        <select class="custom-select d-block w-100" ng-model="options.idList" 
+          ng-options="list.id as list.name for list in lists" 
+          ng-change="changeValue(options.idList)" ></select>
+      </div>
+
+      <div>
         <label for="basic-url">api trello</label>
         <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.apiTrello">
       </div>
@@ -56,11 +72,6 @@
       <div>
         <label for="basic-url">board</label>
         <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.board">
-      </div>
-
-      <div>
-        <label for="basic-url">id list</label>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" ng-model="options.idList">
       </div>
 
       <button ng-click="sauvegarder()">Sauvegarder</button>

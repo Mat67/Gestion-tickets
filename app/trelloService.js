@@ -4,6 +4,8 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
     var service = {
         rechercheCartes: rechercheCartesImpl,
         getMembers: getMembersImpl,
+        getBoardLists: getBoardListsImpl,
+        getBoards: getBoardsImpl,
         getMember: getMemberImpl,
         createCard: createCardImpl
     }
@@ -64,6 +66,30 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
         return defer.promise
     }
 
+    function getBoardListsImpl() {
+        var defer = $q.defer()
+
+        buildRequete('board/{board}/lists?fields=all').then(function (requete) { 
+            $http.get(requete).then(function (result) {
+                defer.resolve(result.data)
+            })
+        })
+
+        return defer.promise
+    }
+
+    function getBoardsImpl() {
+        var defer = $q.defer()
+
+        buildRequete('members/{member}/boards?fields=all').then(function (requete) { 
+            $http.get(requete).then(function (result) {
+                defer.resolve(result.data)
+            })
+        })
+
+        return defer.promise
+    }
+
     function createCardImpl(titre, labels, members) {
         var defer = $q.defer()
 
@@ -114,6 +140,7 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
         }).then(function (r) {
             requete = requete.replace('{board}', options.board)
             requete = requete.replace('{idList}', options.idList)
+            requete = requete.replace('{member}', options.memberId)
             
             requete = options.apiTrello + requete + '&key=' + options.key + '&token=' + options.token
             

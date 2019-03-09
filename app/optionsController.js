@@ -26,10 +26,24 @@ angular.module('app').controller('optionsController', function ($scope, optionsS
         })
     }
 
+    function chargerBoardListes() {
+        trelloService.getBoardLists().then(function (r) {
+            $scope.lists = r
+        })
+    }
+
+    function chargerBoards() {
+        trelloService.getBoards().then(function (r) {
+            $scope.boards = r
+        })
+    }
+
     $scope.onChanged = function onChanged ($event) {
         $scope.options.memberId = $event
     }
 
     $scope.charger()
     chargerMembres()
+    chargerBoardListes()
+    chargerBoards()
 })
