@@ -1,0 +1,27 @@
+{
+  "name": "GestionTickets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "underscore": "^1.8.3",
+    "jquery": "^3.3.1",
+    "angular": "^1.7.8",
+    "bootstrap": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mat67/Gestion-tickets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mat67/Gestion-tickets/issues"
+  },
+  "homepage": "https://github.com/Mat67/Gestion-tickets#readme"
+}
