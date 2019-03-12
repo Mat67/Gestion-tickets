@@ -4,7 +4,8 @@ angular.module('app').component('newCard', {
     bindings: {
         annuler: '=',
         valider: '=',
-        ticket: '<'
+        ticket: '<',
+        cartes: '='
     },
     controller: function newCardComponent($scope, trelloService, optionsService) {
         $scope.members = []
@@ -81,13 +82,11 @@ angular.module('app').component('newCard', {
         }
 
         $scope.ajouter = function ajouter() {
-            $scope.$ctrl.valider()
-            
             trelloService.createCard($scope.carte.titre, 
                 $scope.carte.labels,
                 $scope.carte.members).then(function (resultat) {
                     $scope.carte = {}
-                    $scope.$ctrl.valider(resultat)
+                    $scope.$ctrl.valider($scope.carte)
                 })
         }
 

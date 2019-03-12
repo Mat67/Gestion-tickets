@@ -16,6 +16,7 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
     // var token = '87bb626434f4542e68649ac0492c53cd452f2c14e98601bdb352d16d2866aae3'
     // var key = 'f591bda7cc554fec77c38cc22923b547'
     // var apiTrello = 'https://api.trello.com/1/'
+    // var board = '7iR1688Y'
 
     function rechercheCartesImpl(idTicket) {
         var fields = 'name,url,idMembers,labels'
