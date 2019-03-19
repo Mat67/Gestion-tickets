@@ -12,6 +12,8 @@ angular.module('app').component('newCard', {
         $scope.titre = '' 
 
         chrome.tabs.getSelected(null, function(tab) {
+            $scope.carte.description = tab.url
+
             chrome.tabs.sendRequest(tab.id, {method: "getText"}, function(response) {
                 if(response.method=="getText"){
                     $scope.carte.titre = 'GLPI_' + $scope.ticket + ' : ' + response.titre
@@ -83,10 +85,11 @@ angular.module('app').component('newCard', {
 
         $scope.ajouter = function ajouter() {
             trelloService.createCard($scope.carte.titre, 
+                $scope.carte.description,
                 $scope.carte.labels,
                 $scope.carte.members).then(function (resultat) {
                     $scope.carte = {}
-                    $scope.$ctrl.valider($scope.carte)
+                    $scope.$ctrl.valider(resultat)
                 })
         }
 

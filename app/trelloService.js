@@ -19,8 +19,6 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
     // var board = '7iR1688Y'
 
     function rechercheCartesImpl(idTicket) {
-        var fields = 'name,url,idMembers,labels'
-        
         var defer = $q.defer()
 
         buildRequete('boards/{board}/cards?fields=all').then(function (requete) { 
@@ -104,7 +102,7 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
         return defer.promise
     }
 
-    function createCardImpl(titre, labels, members) {
+    function createCardImpl(titre, description, labels, members) {
         var defer = $q.defer()
 
         // var idList = '541c3b1a4298bfc8767d2643' // Planifie
@@ -118,8 +116,19 @@ angular.module('app').service('trelloService', function ($http, $q, optionsServi
         if (labels)
             stringRequete += '&idLabels=' + labels
 
+        if (description)
+            stringRequete += '&desc=' + description
+
         buildRequete(stringRequete).then(function (requete) {
             $http.post(requete).then(function (result) {
+                result.data.members = []
+
+                _.forEach(result.data.idMembers, function (m) {
+                    service.getMember(m).then(function (resultatMember) {
+                        result.data.members.push(resultatMember)
+                    })
+                })
+
                 defer.resolve(result.data)
             })
         })
